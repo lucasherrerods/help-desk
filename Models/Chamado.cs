@@ -1,11 +1,23 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace help_desk.Models;
 
 public class Chamado
 {
+  [Key]
   public int Id { get; set; }
-  public string Titulo { get; set; }
-  public string Descricao { get; set; }
-  public int Status { get; set; }
-  public DateTime DataAbertura { get; set; }
-  public DateTime DataResolucao { get; set; }
+  public string Titulo { get; set; } = string.Empty;
+  public string Descricao { get; set; } = string.Empty;
+  public StatusChamado Status { get; set; } = StatusChamado.Aberto;
+  public DateTime DataAbertura { get; set; } = DateTime.Now;
+  public DateTime? DataResolucao { get; set; }
+
+  public Chamado() { }
+
+  public enum StatusChamado
+  {
+    Aberto = 0,
+    EmAtendimento = 1,
+    Resolvido = 2
+  }
 }
