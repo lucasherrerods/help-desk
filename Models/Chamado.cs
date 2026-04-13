@@ -14,6 +14,14 @@ public class Chamado
 
   public Chamado() { }
 
+  public Chamado(string titulo, string descricao)
+  {
+    Titulo = titulo;
+    Descricao = descricao;
+    Status = StatusChamado.Aberto;
+    DataAbertura = DateTime.Now;
+  }
+
   public enum StatusChamado
   {
     Aberto = 0,

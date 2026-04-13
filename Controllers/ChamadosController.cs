@@ -31,4 +31,57 @@ public class ChamadosController : ControllerBase
         List<Chamado> Chamados = _context.Chamados.ToList();
         return Ok(Chamados);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult GetChamadoById(int id)
+    {
+        var chamado = _context.Chamados.Find(id);
+
+        if (chamado == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(chamado);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateChamado(int id, Chamado chamadoNovo)
+    {
+        var chamado = _context.Chamados.Find(id);
+
+        if (chamado == null)
+        {
+            return NotFound();
+        }
+
+        chamado.Titulo = chamadoNovo.Titulo;
+        chamado.Descricao = chamadoNovo.Descricao;
+        chamado.Status = chamadoNovo.Status;
+
+        if (chamado.Status == Chamado.StatusChamado.Resolvido)
+        {
+            chamado.DataResolucao = DateTime.Now;
+        }
+
+        _context.SaveChanges();
+
+        return Ok(chamado);
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteChamado(int id)
+    {
+        var chamado = _context.Chamados.Find(id);
+
+        if (chamado == null)
+        {
+            return NotFound();
+        }
+
+        _context.Chamados.Remove(chamado);
+        _context.SaveChanges();
+
+        return NoContent();
+    }
 }
