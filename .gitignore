@@ -1,0 +1,44 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+
+# Environment files
+.env
+
+# Publish output
+publish/
+
+# Database (se estiver usando local)
+*.db
+*.sqlite
+
+# Temporary files
+*.tmp
+*.temp
+
+# Resharper
+_ReSharper*
+*.DotSettings.user
